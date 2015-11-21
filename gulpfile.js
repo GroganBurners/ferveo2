@@ -71,6 +71,16 @@ gulp.task('styles',function() {
   Images
 */
 gulp.task('images',function(){
+
+  gulp.src('src/img/*.ico')
+        .pipe(imagemin({
+            progressive: true,
+            //optimizationLevel: 5,
+            svgoPlugins: [{removeViewBox: false}],
+            //use: [pngquant()]
+        }))
+        .pipe(gulp.dest('dist/'));
+
   gulp.src('src/img/**/*')
         .pipe(imagemin({
             progressive: true,
