@@ -6,6 +6,10 @@ import React from 'react';
 import Feature from './Feature';
 import Teaser from './Teaser';
 import Carousel from './Carousel';
+import Navbar from './Navbar';
+import BookNow from './BookNow';
+import AboutUs from './AboutUs';
+import Footer from './Footer';
 import Catalyst from 'react-catalyst';
 import reactMixin from 'react-mixin';
 import autobind from 'autobind-decorator';
@@ -13,7 +17,7 @@ import autobind from 'autobind-decorator';
 
 @autobind
 class App extends React.Component {
-  
+
   constructor() {
     super();
 
@@ -40,14 +44,17 @@ class App extends React.Component {
   render() {
     return (
       <div>
-            <Carousel carousel={this.state.carousel} />
-
-            <div className="container marketing">
-            <div className="row">
-                  {Object.keys(this.state.marketing).map(this.renderMarketing)}
-            </div>
-            {Object.keys(this.state.features).map(this.renderFeature)}
-            </div>
+        <Navbar />
+        <Carousel carousel={this.state.carousel} />
+        <div className="container marketing">
+          <div className="row">
+            {Object.keys(this.state.marketing).map(this.renderMarketing)}
+          </div>
+          {Object.keys(this.state.features).map(this.renderFeature)}
+          <BookNow />
+          <AboutUs />
+          <Footer />
+        </div>
       </div>
     )
   }

@@ -1,4 +1,28 @@
-module.exports = {  
+module.exports = {
+  winter : {
+    id : 'winter-carousel',
+    active: true,
+    title : 'Winter Deals',
+    text : "Winter is coming! Our prices will keep you warm inside, while the cold keeps coming on the outside!",
+    image : '/dist/img/carousel/pic3.jpg',
+    image_alt : 'Picture of a Gas Hob',
+    buttons: [
+    {location: "#gas", text: 'See Gas >'},
+    {location: "#oil", text: 'See Oil >'},
+    {location: "#repair", text: 'See Repairs >'}
+    ]
+  },
+  autumn : {
+    id : 'autumn-carousel',
+    title : 'Autumn Deals',
+    text : "Autumn is here! As the weather gets cold, we always recommend servicing your heating appliance!",
+    image : '/dist/img/carousel/autumn.jpg',
+    image_alt : 'Picture of Autumn Leaves',
+    buttons: [
+    {location: "#gas", text: 'Gas Services >'},
+    {location: "#oil", text: 'Oil Services >'}
+    ]
+  }/*,
   summer : {
     id : 'summer-carousel',
     active: true,
@@ -9,16 +33,5 @@ module.exports = {
     buttons: [
     {location: "#summer", text: 'See Offers >'},
     ]
-  },
-  winter : {
-    id : 'winter-carousel',
-    title : 'Winter Deals',
-    text : "Winter is here! Our prices will keep you warm inside, while the cold keeps coming on the outside!",
-    image : '/dist/img/carousel/pic3.jpg',
-    image_alt : 'Picture of a Gas Hob',
-    buttons: [
-    {location: "#gas", text: 'See Gas Offers >'},
-    {location: "#oil", text: 'See Oil Offers >'}
-    ]
-  }
+  }*/
 };

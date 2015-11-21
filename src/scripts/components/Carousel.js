@@ -15,13 +15,20 @@ class Carousel extends React.Component {
         <CarouselItem key={key} index={key} caroitem={this.props.carousel[key]} />
       )
   }
-    
+
   render() {
+    var caroItems = [];
+    for (var i=0; i<Object.keys(this.props.carousel).length; i++){
+      switch (i) {
+          case 0: caroItems.push(<li data-target="#myCarousel" key={'myCarouselInd' + i} data-slide-to={i} className="active"></li>); break;
+          default: caroItems.push(<li data-target="#myCarousel" key={'myCarouselInd' + i} data-slide-to={i} ></li>);
+
+        }
+    }
     return (
-      <div id="myCarousel" className="carousel slide" data-ride="carousel">
+      <div id="myCarousel" className="carousel slide" data-ride="carousel" data-interval="10000">
       <ol className="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
+        {caroItems}
       </ol>
       <div className="carousel-inner" role="listbox">
        {Object.keys(this.props.carousel).map(this.renderCarouselItem)}

@@ -15,7 +15,7 @@ import Bootstrap from './lib/bootstrap';
 
 var routes = (
   <Router history={createHistory()}>
-    <Route path="/" component={App}/> 
+    <Route path="/" component={App}/>
   </Router>
 )
 

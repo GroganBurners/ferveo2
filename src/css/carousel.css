@@ -34,6 +34,11 @@ body {
   width: auto;
 }
 
+.navbar-brand img {
+  display: inline-block;
+  margin: 0 5px;
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -46,6 +51,13 @@ body {
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.4);
+  margin-bottom: 10%;
+}
+
+.carousel-caption .btn {
+    margin-right: 5px;
 }
 
 /* Declare heights because of positioning of img element */
@@ -53,7 +65,7 @@ body {
   height: 500px;
   background-color: #777;
   margin-bottom: 30%;
-} 
+}
 .carousel-inner > .item > img {
   position: absolute;
   top: 0;

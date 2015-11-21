@@ -17,7 +17,7 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback')
 const imagemin = require('gulp-imagemin');
-const pngquant = require('imagemin-pngquant');
+//const pngquant = require('imagemin-pngquant');
 
 
 /*
@@ -59,7 +59,7 @@ gulp.task('images',function(){
             progressive: true,
             //optimizationLevel: 5,
             svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()]
+            //use: [pngquant()]
         }))
         .pipe(gulp.dest('dist/img'));
 });
