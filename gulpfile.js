@@ -17,10 +17,25 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback')
 const imagemin = require('gulp-imagemin');
-var ghPages = require('gulp-gh-pages');
-var minifyHTML = require('gulp-minify-html');
 //const pngquant = require('imagemin-pngquant');
+var minifyHTML = require('gulp-minify-html');
+var ghPages = require('gulp-gh-pages');
 
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages({force:true}));
+});
+
+gulp.task('minify-html', function() {
+  var opts = {
+    conditionals: true,
+    spare:true
+  };
+
+  return gulp.src('./src/html/*')
+    .pipe(minifyHTML(opts))
+    .pipe(gulp.dest('./dist/'));
+});
 
 /*
   Styles Task
@@ -34,17 +49,6 @@ gulp.task('combine', function() {
             selectorLimit: 4080
         }))
         .pipe(gulp.dest('dist/css'));
-});
-
-gulp.task('minify-html', function() {
-  var opts = {
-    conditionals: true,
-    spare:true
-  };
-
-  return gulp.src('./src/html/*')
-    .pipe(minifyHTML(opts))
-    .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('styles',function() {
@@ -83,7 +87,7 @@ gulp.task('images',function(){
 gulp.task('browser-sync', function() {
     browserSync({
         // we need to disable clicks and forms for when we test multiple rooms
-        server : {},
+        server : './dist/',
         middleware : [ historyApiFallback() ],
         ghostMode: false
     });
@@ -116,8 +120,8 @@ function buildScript(file, watch) {
       .pipe(source(file))
       .pipe(gulp.dest('./dist/'))
       // If you also want to uglify it
-      .pipe(buffer())
-      .pipe(uglify())
+      //.pipe(buffer())
+      //.pipe(uglify())
       .pipe(rename('app.min.js'))
       .pipe(gulp.dest('./dist'))
       .pipe(reload({stream:true}))
@@ -137,13 +141,9 @@ gulp.task('scripts', function() {
   return buildScript('main.js', false); // this will once run once because we set watch to false
 });
 
-gulp.task('deploy', function() {
-  return gulp.src('./dist/**/*')
-    .pipe(ghPages({force: true}));
-});
-
 // run 'scripts' task first, then watch for future changes
-gulp.task('default', ['images','combine','styles','scripts','browser-sync'], function() {
+gulp.task('default', ['images','minify-html','combine','styles','scripts','browser-sync'], function() {
+  gulp.watch('src/html/*.html', ['minify-html']);
   gulp.watch('src/css/*.css', ['combine']);
   gulp.watch('src/css/**/*', ['styles']); // gulp watch for stylus changes
   return buildScript('main.js', true); // browserify watch for JS changes
