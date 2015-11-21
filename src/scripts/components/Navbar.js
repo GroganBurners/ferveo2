@@ -33,7 +33,7 @@ class Navbar extends React.Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">Grogan Burners<img itemProp="logo" src="dist/img/menu/flames.png"/></a>
+              <a className="navbar-brand" href="#">Grogan Burners<img itemProp="logo" src="/img/menu/flames.png"/></a>
             </div>
             <div className="navbar-collapse collapse">
               <ul className="nav navbar-nav">

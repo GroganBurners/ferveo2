@@ -26,7 +26,7 @@ class BookNow extends React.Component {
         <a id="contact"></a>
       <div className="row featurette">
           <div className="col-md-4">
-          <img className="featurette-image img-responsive" src="/dist/img/featurettes/phone.jpg" alt="Grogan Burners Logo" />
+          <img className="featurette-image img-responsive" src="/img/featurettes/phone.jpg" alt="Grogan Burners Logo" />
      </div>
         <div className="col-md-8">
           <h2 className="featurette-heading">Book now. <span className="text-muted">A great experience awaits.</span></h2>

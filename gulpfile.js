@@ -17,6 +17,8 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback')
 const imagemin = require('gulp-imagemin');
+var ghPages = require('gulp-gh-pages');
+var minifyHTML = require('gulp-minify-html');
 //const pngquant = require('imagemin-pngquant');
 
 
@@ -27,21 +29,32 @@ const imagemin = require('gulp-imagemin');
 gulp.task('combine', function() {
     gulp.src('./src/css/*.css')
         .pipe(combineCSS({
-            lengthLimit: 256,//2KB 
+            lengthLimit: 256,//2KB
             prefix: '_m-',
             selectorLimit: 4080
         }))
         .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('minify-html', function() {
+  var opts = {
+    conditionals: true,
+    spare:true
+  };
+
+  return gulp.src('./src/html/*.html')
+    .pipe(minifyHTML(opts))
+    .pipe(gulp.dest('./dist/'));
+});
+
 gulp.task('styles',function() {
-    
+
   gulp.src('node_modules/bootstrap/dist/fonts/**.*')
     .pipe(gulp.dest('dist/fonts'))
-    
+
   gulp.src('node_modules/bootstrap/dist/js/bootstrap.min.js')
-    .pipe(gulp.dest('scripts/lib'))
-    
+    .pipe(gulp.dest('./src/scripts/lib'))
+
   // Compiles CSS
   /* gulp.src('css/style.styl')
     .pipe(stylus())
@@ -86,14 +99,14 @@ function handleErrors() {
 }
 
 function buildScript(file, watch) {
-  
+
   var props = {
     entries: ['./src/scripts/' + file],
     debug : true,
     transform:  [babelify.configure({stage : 0 })]
   };
 
-  // watchify() if watch requested, otherwise run browserify() once 
+  // watchify() if watch requested, otherwise run browserify() once
   var bundler = watch ? watchify(browserify(props)) : browserify(props);
 
   function rebundle() {
@@ -103,8 +116,8 @@ function buildScript(file, watch) {
       .pipe(source(file))
       .pipe(gulp.dest('./dist/'))
       // If you also want to uglify it
-      //.pipe(buffer())
-      //.pipe(uglify())
+      .pipe(buffer())
+      .pipe(uglify())
       .pipe(rename('app.min.js'))
       .pipe(gulp.dest('./dist'))
       .pipe(reload({stream:true}))
@@ -122,6 +135,11 @@ function buildScript(file, watch) {
 
 gulp.task('scripts', function() {
   return buildScript('main.js', false); // this will once run once because we set watch to false
+});
+
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages({force: true}));
 });
 
 // run 'scripts' task first, then watch for future changes

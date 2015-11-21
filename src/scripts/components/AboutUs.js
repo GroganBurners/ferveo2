@@ -14,7 +14,7 @@ class AboutUs extends React.Component {
 			<hr className="featurette-divider" />
       <div className="row featurette">
         <div className="col-md-4">
-          <img className="featurette-image img-responsive" src="/dist/img/featurettes/logo.png" alt="Generic placeholder image" />
+          <img className="featurette-image img-responsive" src="/img/featurettes/logo.png" alt="Generic placeholder image" />
         </div>
         <div className="col-md-5">
         <a id="about"></a>
@@ -42,8 +42,8 @@ class AboutUs extends React.Component {
           <p>We also take safety as the number one priority. All of our engineers are RGI (gas) and OFTEC (oil) certified and carry work out to the highest standard.</p>
         </div>
         <div className="col-md-3">
-        <img src="/dist/img/cert/oftec.jpg" />
-        <img src="/dist/img/cert/rgii.jpg" />
+        <img src="/img/cert/oftec.jpg" />
+        <img src="/img/cert/rgii.jpg" />
         </div>
       </div>
 
