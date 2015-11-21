@@ -42,7 +42,7 @@ gulp.task('minify-html', function() {
     spare:true
   };
 
-  return gulp.src('./src/html/*.html')
+  return gulp.src('./src/html/*')
     .pipe(minifyHTML(opts))
     .pipe(gulp.dest('./dist/'));
 });
