@@ -30,7 +30,7 @@ gulp.task('combine', function() {
     gulp.src('./src/css/*.css')
         .pipe(combineCSS({
             lengthLimit: 256,//2KB
-            prefix: '_m-',
+            prefix: 'm-',
             selectorLimit: 4080
         }))
         .pipe(gulp.dest('dist/css'));
