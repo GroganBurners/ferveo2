@@ -20,8 +20,28 @@ const imagemin = require('gulp-imagemin');
 //const pngquant = require('imagemin-pngquant');
 var minifyHTML = require('gulp-minify-html');
 var ghPages = require('gulp-gh-pages');
+// AWS Dependencies
+var AWS = require('aws-sdk');
+var awspublish = require('gulp-awspublish');
 
-gulp.task('deploy', function() {
+gulp.task('publish', ['images','minify-html','combine','styles','scripts'], function() {
+
+var publisher = awspublish.create({
+  region: 'us-east-1',
+  params: {
+    Bucket: 'groganburners.ie'
+  },
+  credentials: new AWS.SharedIniFileCredentials({profile: 'gbswebuser'})
+});
+
+return gulp.src('./dist/**/*')
+  .pipe(publisher.publish())
+  .pipe(publisher.sync())
+  .pipe(awspublish.reporter());
+
+});
+
+gulp.task('deploy', ['images','minify-html','combine','styles','scripts'], function() {
   return gulp.src('./dist/**/*')
     .pipe(ghPages({force:true}));
 });
