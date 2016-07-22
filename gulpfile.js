@@ -20,6 +20,7 @@ const imagemin = require('gulp-imagemin');
 //const pngquant = require('imagemin-pngquant');
 var minifyHTML = require('gulp-minify-html');
 var ghPages = require('gulp-gh-pages');
+var del = require('del');
 // AWS Dependencies
 var AWS = require('aws-sdk');
 var awspublish = require('gulp-awspublish');
@@ -109,6 +110,11 @@ gulp.task('images',function(){
             //use: [pngquant()]
         }))
         .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('clean', function() {
+  // You can use multiple globbing patterns as you would with `gulp.src`
+  return del(['dist']);
 });
 
 /*
