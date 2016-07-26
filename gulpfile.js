@@ -24,6 +24,7 @@ var del = require('del');
 // AWS Dependencies
 var AWS = require('aws-sdk');
 var awspublish = require('gulp-awspublish');
+var cloudfront = require('gulp-cloudfront-invalidate-aws-publish');
 
 gulp.task('build', ['images','minify-html','combine','styles','scripts']);
 
@@ -37,8 +38,15 @@ var publisher = awspublish.create({
   credentials: new AWS.SharedIniFileCredentials({profile: 'gbswebuser'})
 });
 
+var cfSettings = {
+  distribution: 'E1OV6N1FN6YFQK' // Cloudfront distribution ID
+}
+
+
 return gulp.src('./dist/**/*')
   .pipe(publisher.publish())
+  .pipe(cloudfront(cfSettings))
+  .pipe(publisher.cache())
   .pipe(publisher.sync())
   .pipe(awspublish.reporter());
 
