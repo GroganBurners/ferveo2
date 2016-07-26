@@ -4,6 +4,11 @@ node_js:
   - "6.1"
   - "5.11"
   - "0.6"
+addons:
+    artifacts:
+      s3_region: "us-east-1"
+      paths:
+        - dist/
 install:
   - npm install -g gulp
   - npm install

@@ -25,7 +25,9 @@ var del = require('del');
 var AWS = require('aws-sdk');
 var awspublish = require('gulp-awspublish');
 
-gulp.task('publish', ['images','minify-html','combine','styles','scripts'], function() {
+gulp.task('build', ['images','minify-html','combine','styles','scripts']);
+
+gulp.task('publish', ['build'], function() {
 
 var publisher = awspublish.create({
   region: 'us-east-1',
