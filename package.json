@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": "https://github.com/groganburners/ferveo",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Neil Grogan",
+  "license": "",
   "devDependencies": {
     "autobind-decorator": "1.3.2",
     "aws-sdk": "^2.4.9",
