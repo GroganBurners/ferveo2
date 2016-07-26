@@ -9,4 +9,4 @@ addons:
 install:
   - npm install -g gulp
   - npm install
-script: gulp
+script: gulp build
