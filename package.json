@@ -20,7 +20,7 @@
     "combine-css": "0.0.2",
     "connect-history-api-fallback": "1.1.0",
     "del": "^2.2.1",
-    "got": "^5.1.0",
+    "got": "^6.3.0",
     "gulp": "3.9.0",
     "gulp-autoprefixer": "3.1.0",
     "gulp-awspublish": "^3.3.0",
