@@ -1,0 +1,12 @@
+/* TEAM */
+Developer: Neil Grogan
+Site: https://ngrogan.com
+Twitter: @dueyfinster
+Location:  Kilkenny, Ireland.
+
+/* SITE */
+Last update: 2016/08/01
+Standards: HTML5, CSS3, ES6
+Components: Bootstrap, jQuery
+Software: Nodejs, Gulp
+IDE: Vim, Sublime Text
