@@ -1,11 +1,11 @@
 {
   "name": "gbs-ferveo",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "",
   "main": "index.js",
   "repository": "https://github.com/groganburners/ferveo",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "author": "Neil Grogan",
   "license": "",
@@ -41,6 +41,7 @@
     "imagemin-pngquant": "5.0.0",
     "install": "0.1.8",
     "jquery": "3.1.0",
+    "mocha": "^3.0.0",
     "pngquant-bin": "^3.0.0",
     "react": "15.3.0",
     "react-bootstrap": "^0.30.0",
