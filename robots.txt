@@ -1,0 +1,1 @@
+User-Agent: * Disallow: Allow: / Sitemap: https://www.groganburners.ie/sitemap.xml
