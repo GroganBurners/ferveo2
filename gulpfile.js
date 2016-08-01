@@ -1,5 +1,6 @@
 var source = require('vinyl-source-stream');
 var gulp = require('gulp');
+var bump = require('gulp-bump');
 var gutil = require('gulp-util');
 var browserify = require('browserify');
 var babelify = require('babelify');
@@ -25,6 +26,12 @@ var del = require('del');
 var AWS = require('aws-sdk');
 var awspublish = require('gulp-awspublish');
 var cloudfront = require('gulp-cloudfront-invalidate-aws-publish');
+
+gulp.task('bump', function(){
+  gulp.src('./package.json')
+  .pipe(bump({key: "version", type:'minor'}))
+  .pipe(gulp.dest('./'));
+});
 
 gulp.task('build', ['images','minify-html','combine','styles','scripts']);
 
