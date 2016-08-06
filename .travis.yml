@@ -1,7 +1,10 @@
 language: node_js
 node_js:
-  - "6.1"
+- '6.1'
 install:
-  - npm install -g gulp
-  - npm install
+- npm install -g gulp
+- npm install
 script: npm test
+notifications:
+  slack:
+    secure: ADsvs1Q8/AnDa9NmUiwUgKHcFJBAbQCMb8nQCfrdzPv/e2daGPPGSJrrWQU5eSOGFwUMoskmvptMjTx8x72fIQqN7tgKtYCgkXbKGa/wrjZSYGyf1PvUGvXjgrc/e16+herCsAUgMk/0+uIBY5UyeE+DGMiu1S61kGwGe2MYJdI=
