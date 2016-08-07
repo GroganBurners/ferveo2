@@ -160,7 +160,7 @@ function buildScript(file, watch) {
   var props = {
     entries: ['./src/scripts/' + file],
     debug : true,
-    transform:  [babelify.configure({stage : 0 })]
+    transform:  [babelify.configure({ presets: ["es2015", "react", "stage-0"], plugins: ['transform-decorators-legacy'] })]
   };
 
   // watchify() if watch requested, otherwise run browserify() once
