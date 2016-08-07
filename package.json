@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/groganburners/ferveo",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/browser.js test/test.js"
+    "test": "./node_modules/mocha/bin/mocha test/setup.js test/*.test.js"
   },
   "author": "Neil Grogan",
   "license": "N/A",
